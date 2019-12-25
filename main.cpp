@@ -28,9 +28,19 @@ int main(void)
 	switch (choise)
 	{
 	case 1: system("cls");
+		try
+		{
 		in.open("test.txt");
 		if (!in)//Ошибка открытия файла
-			cout << "Не удалось открыть файл.\n";
+		{
+			exception err("Ошибка открытия файла\n");
+			throw err;
+		}
+		if (in.peek() == -1)
+		{
+			exception err("\nОткрываемый файл пустой\n");
+			throw err;
+		}
 			while (((ch = in.get()) != EOF))
 			{
 				size++;
@@ -100,6 +110,11 @@ int main(void)
 				
 			}
 		in.close(); 
+		}
+		catch(exception& err)
+		{
+			cout << err.what() << endl << endl;
+		}
 		if (flag3 == 1 || flag2 == 1)
 		{
 			mas[size] = '\0';
