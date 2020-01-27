@@ -149,7 +149,9 @@ int main(void)
 			catch (exception& err)
 			{
 				cout << err.what() << endl << endl;
+
 				in.close();
+				cout << "\nИсходный файл закрыт.\n";
 			}
 			if (flag3 == 1 || flag2 == 1)
 			{
